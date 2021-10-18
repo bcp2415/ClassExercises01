@@ -8,27 +8,35 @@ class Book {
     this.numberPages = numberPages;
     this.numberTimesCheckedOut = numberTimesCheckedOut;
     this.isDiscarded = isDiscarded;
+  },
+
+  checkout(uses = 1) {
+    this.numberTimesCheckedOut += uses;
   }
 }
 
 
 // Define your Manual and Novel classes here:
 class Manual extends Book {
-  constructor() {
-    super();
+  constructor(title, author, copyrightDate, ISBN, numberPages, numberTimesCheckedOut, isDiscarded) {
+    super(title, author, copyrightDate, ISBN, numberPages, numberTimesCheckedOut, isDiscarded);
+  },
+
+  isTooOld(currentYear) {
+    if ((currentYear - this.copyrightDate) > 5) {
+      this.isDiscarded = true;
   }
-  this.isTooOld = function(this.copyrightDate) {
-    const currentYear = 2021;
-    return (currentYear - copyrightDate) > 5;
-  }
+
 };
 
 class Novel extends Book {
-  constructor() {
-    super();
-  }
-  this.isReadyForRetirement(this.numberTimesCheckedOut) {
-    return (this.numberTimesCheckedOut > 100);
+  constructor(title, author, copyrightDate, ISBN, numberPages, numberTimesCheckedOut, isDiscarded) {
+    super(title, author, copyrightDate, ISBN, numberPages, numberTimesCheckedOut, isDiscarded);
+  },
+
+  isReadyForRetirement(this.numberTimesCheckedOut) {
+    if (this.numberTimesCheckedOut > 100) {
+      this.isDiscarded = true;
   }
 };
 
